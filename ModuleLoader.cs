@@ -135,7 +135,7 @@ namespace ModuleLoader
 
             foreach (var item in Directory.GetDirectories(nodeModulesDir).Where(x => !x.Contains(".bin") && !x.Contains("@types")))
             {
-                var packageName = item.Split('\\').Last();
+                var packageName = item.Split(Path.DirectorySeparatorChar).Last();
 
                 var mainFileLocation = JObject.Parse(File.ReadAllText(Path.Combine(nodeModulesDir, packageName, "package.json")))["main"];
 
